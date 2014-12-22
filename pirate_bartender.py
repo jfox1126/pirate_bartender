@@ -14,9 +14,14 @@ ingredients = {
     "fruity": ["slice of orange", "dash of cassis", "cherry on top"]
 }
 
+name_adjectives = ["Piercing", "Mellow", "Ragged", "Flourescent"]
+
+name_nouns = ["Kraken", "Squid-tentacle", "Starfish", "Sperm whale"]
+
 like_list = {}
 
 def ask_likes():
+  print "Ahoy! Let me ask you a few questions to find you a drink:"
   def convert_boolean(x):
     y = raw_input(questions[x])
     if y.lower() == "yes" or y.lower() == "y":
@@ -32,12 +37,11 @@ def ask_likes():
     "sweet": convert_boolean("sweet"),
     "fruity": convert_boolean("fruity"),
   }
-  print like_list
+  #print like_list
 
 import random
 
 def drink_maker():
-  ask_likes()
   drink_ingredients = []
   def add_ingredients(x):
     if like_list[x] == True:
@@ -48,7 +52,12 @@ def drink_maker():
   add_ingredients("bitter")
   add_ingredients("sweet")
   add_ingredients("fruity")
-  print drink_ingredients
+  name = random.choice(name_adjectives) + " " + random.choice(name_nouns)
+  print "Then try a " + name + "! Just combine:"
+  for i in range(len(drink_ingredients)):
+    print "A " + drink_ingredients[i]
+  #print drink_ingredients
   
 if __name__ == "__main__":
+  ask_likes()
   drink_maker()
