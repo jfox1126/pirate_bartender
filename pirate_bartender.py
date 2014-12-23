@@ -18,10 +18,11 @@ name_adjectives = ["Piercing", "Mellow", "Ragged", "Flourescent"]
 
 name_nouns = ["Kraken", "Squid-tentacle", "Starfish", "Sperm whale"]
 
-like_list = {}
+like_list = {}  
 
 def ask_likes():
-  print "Ahoy! Let me ask you a few questions to find you a drink:"
+  """Prompts user to provide input and creates a list of what they like"""
+  print "Ahoy! Let me ask you a few questions to find you a drink. [Respond with 'yes' or 'y']." 
   def convert_boolean(x):
     y = raw_input(questions[x])
     if y.lower() == "yes" or y.lower() == "y":
@@ -58,6 +59,15 @@ def drink_maker():
     print "A " + drink_ingredients[i]
   #print drink_ingredients
   
+def have_another():
+  x = raw_input("Do ye need another?")
+  while x.lower() == "yes" or x.lower() == "y":
+    drink_maker()
+    x = raw_input("Do ye need another?")
+  else:
+    print "Glad I could help you!"
+
 if __name__ == "__main__":
   ask_likes()
   drink_maker()
+  have_another()
